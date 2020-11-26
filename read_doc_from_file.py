@@ -10,8 +10,9 @@ def readDocsFromFile(file):
         _, id_doc, id_sent = name.split(".")[0] , name.split(".")[1] , name.split(".")[2]
         idDocs.append([id_doc , id_sent])
         sentences.append(sentence)
-
-    print(lines[:1])
+    with open("fdfd","w") as f:
+        f.write("\n".join(sentences))
+    print(sentences)
 
 file ='data_khm.txt'
 readDocsFromFile(file)
