@@ -12,7 +12,19 @@ def readDocsFromFile(file):
         sentences.append(sentence)
     with open("fdfd","w") as f:
         f.write("\n".join(sentences))
-    print(sentences)
+    print(idDocs)
 
 file ='data_khm.txt'
 readDocsFromFile(file)
+
+def splitListIdDoc(listIdDoc):
+    result = [] 
+    if len(listIdDoc) == 1:
+        return 0
+    start = 0
+    lenListDoc = len(listIdDoc)
+    while start < lenListDoc :
+        temp_result = [] 
+        current_index = start
+        while listIdDoc[current_index][0] == listIdDoc[start][0] : 
+            
