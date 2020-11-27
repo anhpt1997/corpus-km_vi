@@ -14,8 +14,8 @@ def readDocsFromFile(file):
         f.write("\n".join(sentences))
     print(idDocs)
 
-file ='data_khm.txt'
-readDocsFromFile(file)
+# file ='data_khm.txt'
+# readDocsFromFile(file)
 
 def splitListIdDoc(listIdDoc):
     result = [] 
@@ -24,7 +24,15 @@ def splitListIdDoc(listIdDoc):
     start = 0
     lenListDoc = len(listIdDoc)
     while start < lenListDoc :
-        temp_result = [] 
-        current_index = start
-        while listIdDoc[current_index][0] == listIdDoc[start][0] : 
-            
+        temp_result = [start] 
+        current_index = start + 1
+        while  current_index < lenListDoc  and listIdDoc[current_index][0] == listIdDoc[start][0] : 
+            temp_result.append(current_index)
+            current_index += 1 
+        
+        result.append(temp_result)
+        start = current_index
+    return result
+
+l= [ [1 , 1],[1 ,2],[2 , 1],[3,1],[3,2],[3,3],[4,1]]
+print(splitListIdDoc(l))
