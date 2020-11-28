@@ -1,6 +1,6 @@
-def readDocsFromFile(file):
+def readDocsFromFile(file , language):
 
-    with open(file , 'r') as f_r:
+    with open(file+"_"+language+".txt" , 'r') as f_r:
         lines = f_r.readlines()
         lines =[line.replace("\n","") for line in lines]
     
@@ -10,15 +10,13 @@ def readDocsFromFile(file):
         _, id_doc, id_sent = name.split(".")[0] , name.split(".")[1] , name.split(".")[2]
         idDocs.append([id_doc , id_sent])
         sentences.append(sentence)
-    with open("fdfd","w") as f:
+    with open("sentences_"+language+".txt","w") as f:
         f.write("\n".join(sentences))
-    print(idDocs)
-
-# file ='data_khm.txt'
-# readDocsFromFile(file)
+    print(splitListIdDoc(idDocs))
+    # print(sentences)
 
 def splitListIdDoc(listIdDoc):
-    result = [] 
+    result = {}
     if len(listIdDoc) == 1:
         return 0
     start = 0
@@ -30,9 +28,10 @@ def splitListIdDoc(listIdDoc):
             temp_result.append(current_index)
             current_index += 1 
         
-        result.append(temp_result)
+        result[listIdDoc[start][0]] = temp_result
         start = current_index
     return result
 
-l= [ [1 , 1],[1 ,2],[2 , 1],[3,1],[3,2],[3,3],[4,1]]
-print(splitListIdDoc(l))
+# l= [ [1 , 1],[1 ,2],[2 , 1],[3,1],[3,2],[4,3],[4,1]]
+# print(splitListIdDoc(l))
+readDocsFromFile('data','vi')
